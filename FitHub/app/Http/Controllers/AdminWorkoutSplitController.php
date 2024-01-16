@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WorkoutSplit;
+
 use Illuminate\Http\Request;
 
 class AdminWorkoutSplitController extends Controller{

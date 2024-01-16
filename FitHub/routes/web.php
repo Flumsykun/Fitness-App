@@ -1,26 +1,31 @@
 <?php
 
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminWorkoutSplitController;
+
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+//public routes
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+// Authentication Routes
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-//User Routes
+//Request Password Reset Routes
+Route::get('/request-password-reset', [UserController::class, 'requestPasswordReset'])->name('request.password.reset');
+
+//register routes
+Route::post('/register', [UserController::class, 'register'])->name('register');
+
+// Authenticated User Routes
 Route::middleware(['auth'])->group(function () {
-    Route::post('/like{split}', [UserController::class, 'like'])->name('split.like');
-    Route::post('/dislike{split}', [UserController::class, 'dislike'])->name('split.dislike');
+    Route::get('/user-profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/like/{split}', [UserController::class, 'like'])->name('split.like');
+    Route::post('/dislike/{split}', [UserController::class, 'dislike'])->name('split.dislike');
 });
 
 //Admin Routes
