@@ -6,20 +6,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminWorkoutSplitController;
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 //public routes
 Route::get('/', function () {
     return view('home');
 });
-// Authentication Routes
-Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-//Request Password Reset Routes
-Route::get('/request-password-reset', [UserController::class, 'requestPasswordReset'])->name('request.password.reset');
-
-//register routes
-Route::post('/register', [UserController::class, 'register'])->name('register');
 
 // Authenticated User Routes
 Route::middleware(['auth'])->group(function () {
