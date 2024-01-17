@@ -34,7 +34,7 @@ class UserController extends Controller{
     public function requestPasswordReset()
     {
         // Return the request password reset view
-        return view('resetpassword');
+        return view('forgot-password');
     }
 
 

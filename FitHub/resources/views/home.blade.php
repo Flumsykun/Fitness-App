@@ -18,7 +18,7 @@
                 <!-- If user is not logged in, show login links -->
                 <x-nav-link :href="route('auth.login')">Login</x-nav-link>
                 <x-nav-link :href="route('auth.register')">Register</x-nav-link>
-                <x-nav-link :href="route('request.password.reset')">Forgot your password?</x-nav-link>
+                <x-nav-link :href="route('auth.request.password.reset',  ['token' => $token])">Forgot your password?</x-nav-link>
             @else
                 <!-- If user is logged in, show appropriate links -->
                 @if(auth()->user()->hasRole(\App\Helpers\Roles::ADMIN))
@@ -30,8 +30,7 @@
                     <x-nav-link :href="route('user.profile')">User Profile</x-nav-link>
                 @endif
                 <!-- Add links to other key features or sections -->
-                <x-nav-link :href="route('auth.
-logout')" class="text-red-500">Logout</x-nav-link>
+                <x-nav-link :href="route('auth.logout')" class="text-red-500">Logout</x-nav-link>
             @endguest
         </ul>
     </section>
