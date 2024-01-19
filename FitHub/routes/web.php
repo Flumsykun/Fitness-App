@@ -10,8 +10,8 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 //public routes
 Route::get('/', function () {
-    return view('home');
-});
+    return view('home.index');
+})->name('home.index');;
 
 
 // Authenticated User Routes
