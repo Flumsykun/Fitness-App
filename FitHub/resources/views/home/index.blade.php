@@ -26,7 +26,7 @@
                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role: {{ auth()->user()->role ? auth()->user()->role->name : 'No role assigned' }}</label>
                 </div>
                 <!-- If user is logged in, show appropriate links -->
-                @if(auth()->user()->role(\App\Helpers\Roles::ADMIN))
+                @if(auth()->user()->roles(\App\Helpers\Roles::ADMIN))
                     <!-- Admin links -->
                     <x-nav-link :href="route('admin.dashboard')">Admin Dashboard</x-nav-link>
                     <x-nav-link :href="route('admin.workout-split.create')">Create Workout Split</x-nav-link>

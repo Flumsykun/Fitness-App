@@ -16,10 +16,32 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@example.com',
+        $adminRole = Role::where('name', 'admin')->first();
+        $coachRole = Role::where('name', 'coach')->first();
+        $userRole = Role::where('name', 'user')->first();
+
+        //create an admin user
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
             'password' => Hash::make('password'),
+            'role_id' => $adminRole->id,
+        ]);
+
+        //create a coach user
+        User::create([
+            'name' => 'Coach User',
+            'email' => 'coach@exampl.com',
+            'password' => Hash::make('password'),
+            'role_id' => $coachRole->id,
+        ]);
+
+        //create a regular user
+        User::create([
+            'name' => 'Regular User',
+            'email' => 'user@example.com',
+            'password' => Hash::make('password'),
+            'role_id' => $userRole->id,
         ]);
     }
 }

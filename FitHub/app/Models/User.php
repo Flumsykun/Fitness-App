@@ -43,10 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    //role relationship a user one role and roles can have many users
-    public function role()
+
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function run(): void

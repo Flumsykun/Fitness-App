@@ -10,9 +10,9 @@ class Role extends Model
 {
     use HasFactory;
 
-    public function users(): BelongsToMany
+    public function users(): HasMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany('App\Models\User');
     }
 
     public function permissions(): BelongsToMany
