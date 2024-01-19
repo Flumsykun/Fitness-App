@@ -1,4 +1,4 @@
-@extends('layout.components.shared.app')
+@extends('layouts.app')
 
 @section('title', 'Reset Password')
 
