@@ -26,17 +26,27 @@
                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role: {{ auth()->user()->role ? auth()->user()->role->name : 'No role assigned' }}</label>
                 </div>
                 <!-- If user is logged in, show appropriate links -->
-                @if(auth()->user()->roles(\App\Helpers\Roles::ADMIN))
+                @if(auth()->user()->Role(\App\Helpers\Roles::ADMIN))
                     <!-- Admin links -->
                     <x-nav-link :href="route('admin.dashboard')">Admin Dashboard</x-nav-link>
                     <x-nav-link :href="route('admin.workout-split.create')">Create Workout Split</x-nav-link>
                 @else
                     <!-- User links -->
+
                     <x-nav-link :href="route('user.profile')">User Profile</x-nav-link>
+                    <x-nav-link :href="route('user.workout-split.index')">Workout Splits</x-nav-link>
 
                 @endif
                 <!-- Add links to other key features or sections -->
-                <x-nav-link :href="route('auth.logout')" class="text-red-500">Logout</x-nav-link>
+                <!-- Logout link POST method -->
+                <form method="POST" class="text-red-500" action="{{ route('auth.logout') }}">
+                    @csrf
+                    <x-nav-link :href="route('auth.logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        {{ __('Logout') }}
+                    </x-nav-link>
+
+{{--                <x-nav-link :href="route('auth.logout')" class="text-red-500">Logout</x-nav-link>--}}
             @endguest
         </ul>
     </section>

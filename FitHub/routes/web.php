@@ -1,10 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminWorkoutSplitController;
 
+use App\Http\Controllers\UserRoleController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -13,13 +13,7 @@ Route::get('/', function () {
     return view('home.index');
 })->name('home.index');;
 
-
-// Authenticated User Routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/user-profile', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('/like/{split}', [UserController::class, 'like'])->name('split.like');
-    Route::post('/dislike/{split}', [UserController::class, 'dislike'])->name('split.dislike');
-});
+Route::post('/users/{user}/assign-role', [UserRoleController::class, 'assignRole']);
 
 //Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function (){
@@ -31,16 +25,3 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::put('admin/workout-split/update/{split}', [AdminWorkoutSplitController::class, 'update'])->name('admin.workout-split.update');
     Route::delete('admin/workout-split/delete/{split}', [AdminWorkoutSplitController::class, 'delete'])->name('admin.workout-split.delete');
 });
-
-//Post Routes
-
-
-//Comment Routes
-
-
-//Like Routes
-
-
-//Dislike Routes
-
-

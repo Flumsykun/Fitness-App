@@ -17,11 +17,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
 
-    public static function home()
-    {
-    }
+    //do something if users are authenticated and sent them back to the index page
+    public const HOME = '/';
+
+
+
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -29,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            return Limit::perMinute(90)->by($request->user()?->id ?: $request->ip());
         });
 
         $this->routes(function () {
@@ -41,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
-                ->as('auth.')
+
                 ->group(base_path('routes/auth.php'));
         });
     }

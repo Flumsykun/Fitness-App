@@ -10,14 +10,14 @@ class Role extends Model
 {
     use HasFactory;
 
-    public function users(): HasMany
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany(User::class);
     }
 
-    public function permissions(): BelongsToMany
+    public function permissions(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsToMany(Permission::class);
+        return $this->belongsTo(Permission::class);
     }
 
 
