@@ -14,9 +14,9 @@
         <ul class="space-y-2">
             @guest
                 <!-- If user is not logged in, show login links -->
-                <x-nav-link :href="route('auth.login')">Login</x-nav-link>
-                <x-nav-link :href="route('auth.register')">Register</x-nav-link>
-                <x-nav-link :href="route('auth.password.request')">Forgot Password</x-nav-link>
+                <x-nav-link :href="route('login')">Login</x-nav-link>
+                <x-nav-link :href="route('register')">Register</x-nav-link>
+                <x-nav-link :href="route('password.request')">Forgot Password</x-nav-link>
             @else
                 <div>
                     <label for="Welcome"
@@ -39,9 +39,9 @@
                 @endif
                 <!-- Add links to other key features or sections -->
                 <!-- Logout link POST method -->
-                <form method="POST" class="text-red-500" action="{{ route('auth.logout') }}">
+                <form method="POST" class="text-red-500" action="{{ route('logout') }}">
                     @csrf
-                    <x-nav-link :href="route('auth.logout')" onclick="event.preventDefault();
+                    <x-nav-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                         {{ __('Logout') }}
                     </x-nav-link>

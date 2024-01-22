@@ -14,7 +14,7 @@
                         Create your account
                     </h1>
 
-                    <form class="space-y-4 md:space-y-6" action="{{route('auth.register')}}" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="{{route('register')}}" method="POST">
                         @csrf
                         @component('layout.components.shared.form-group', [
                             'inputName' => 'name',
@@ -43,7 +43,7 @@
                         @endcomponent
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
-                                <a href="{{ route('auth.password.request') }}"
+                                <a href="{{ route('password.request') }}"
                                    class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
                                     password?
                                 </a>
@@ -54,7 +54,7 @@
                             Sign me up!
                         </button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">Already have an account?
-                            <a href="{{ route('auth.login') }}"
+                            <a href="{{ route('login') }}"
                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
                         </p>
                         <a href="{{ route('home.index') }}"

@@ -13,7 +13,7 @@
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account
                     </h1>
-                    <form method="POST" class="space-y-4 md:space-y-6" action="{{route ('auth.login') }}">
+                    <form method="POST" class="space-y-4 md:space-y-6" action="{{route ('login') }}">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
@@ -31,7 +31,7 @@
 
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
-                                <a href="{{ route('auth.password.request') }}"
+                                <a href="{{ route('password.request') }}"
                                    class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
                                     password?
                                 </a>

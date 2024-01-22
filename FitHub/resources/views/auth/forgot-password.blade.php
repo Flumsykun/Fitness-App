@@ -18,7 +18,7 @@
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Reset your password
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="{{ route('auth.password.email') }}" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="{{ route('password.email') }}" method="POST">
                         @csrf
 
                         <div>
