@@ -3,10 +3,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminWorkoutSplitController;
-
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\UserWorkoutSplitController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 //public routes
 Route::get('/', function () {
@@ -24,4 +24,16 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::get('admin/workout-split/edit/{split}', [AdminWorkoutSplitController::class, 'edit'])->name('admin.workout-split.edit');
     Route::put('admin/workout-split/update/{split}', [AdminWorkoutSplitController::class, 'update'])->name('admin.workout-split.update');
     Route::delete('admin/workout-split/delete/{split}', [AdminWorkoutSplitController::class, 'delete'])->name('admin.workout-split.delete');
+
+
 });
+
+//User Routes
+Route::middleware(['auth', 'role:user'])->group(function (){
+    Route::get('user/dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::resource('users', UserController::class)->middleware('auth');
+    Route::get('user/split/index', [UserWorkoutSplitController::class, 'create'])->name('user.workout-split.create');
+});
+
+
+
