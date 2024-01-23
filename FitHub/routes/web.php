@@ -28,5 +28,9 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
 });
 
+//User routes
+Route::get('user.split.request', [UserWorkoutSplitController::class, 'show'])->name('user.split.request');  //show the form to request a workout split
+Route::post('user.split.request', [UserWorkoutSplitController::class, 'store'])->name('user.split.request'); //store the workout split request
+
 
 
