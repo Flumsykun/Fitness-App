@@ -12,7 +12,7 @@
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     @if (session('status'))
                         <div class="mb-4 font-medium text-sm text-green-600">
-                            {{ session('status') }}
+                            00{{ session('status') }}
                         </div>
                     @endif
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -20,7 +20,6 @@
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="{{ route('password.email') }}" method="POST">
                         @csrf
-
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
