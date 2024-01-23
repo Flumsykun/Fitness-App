@@ -28,10 +28,5 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
 });
 
-//User Routes
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::resource('users', UserController::class)->middleware('auth');
-    Route::get('user/split/request', [UserWorkoutSplitController::class, 'show'])->name('split.request');
-});
+
 
