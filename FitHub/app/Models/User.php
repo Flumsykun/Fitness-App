@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasRelationships, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +49,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
     public function role():belongsTo
     {
         return $this->belongsTo(Role::class);
@@ -61,5 +63,10 @@ class User extends Authenticatable
     public function getRole()
     {
         // TODO: Implement getRole() method.
+    }
+
+    public function hasRole(): bool
+    {
+        return $this->role ? $this->role->name === 'admin' : false;
     }
 }

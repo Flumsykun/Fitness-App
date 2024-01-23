@@ -10,7 +10,7 @@ class CheckRole{
             return redirect('/login');
         }
         if (!auth()->user()->hasRole($role)) {
-            RouteServiceProvider::home();
+            return redirect(RouteServiceProvider::HOME);
         }
 
         return $next($request);

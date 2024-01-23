@@ -18,10 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
 
-    //do something if users are authenticated and sent them back to the index page
+
     public const HOME = '/';
-
-
 
 
     /**

@@ -10,15 +10,7 @@
 </head>
 <body class="@yield('body_class')">
 
-@if($errors->any())
-    <div class="bg-red-500 text-white p-4">
-        <ul class="list-disc">
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<x-layout.components.shared.error-banner :errors="$errors" />
 
 @yield('content')
 @vite('resources/js/app.js')
