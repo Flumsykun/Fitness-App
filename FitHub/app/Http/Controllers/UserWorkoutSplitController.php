@@ -6,13 +6,15 @@ use App\Http\Requests\WorkoutSplitRequest;
 
 class UserWorkoutSplitController extends Controller
 {
-    public function store(WorkoutSplitRequest $request){
-        //request validated
-
-        //retrieve the validated input data
-        $validated = $request->validated();
-
-        //Use the validated data to store a new workout split
-
+    public function show()
+    {
+        return view('user.split.request');
     }
+
+    public function store(WorkoutSplitRequest $request)
+    {
+        //Validation logic comes here
+        return redirect()->route('user.dashboard');
+    }
+
 }
