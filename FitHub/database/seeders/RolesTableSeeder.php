@@ -2,19 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use http\Client\Curl\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        DB::table('roles')->insert([
-            ['name' => 'admin', 'description' => 'Can manage everything'],
-            ['name' => 'coach', 'description' => 'Can make workout splits but not on the same level as admin'],
-            ['name' => 'user', 'description' => 'Can only request the splits and like and dislike them'],
-        ]);
+        Role::query()->firstOrCreate(['name' => 'user']);
+        Role::query()->firstOrCreate(['name' => 'coach']);
+        Role::query()->firstOrCreate(['name' => 'admin']);
     }
 }

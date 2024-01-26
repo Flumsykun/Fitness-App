@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingredient_meal_preps', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('workout_split', function (Blueprint $table) {
+
+            $table->foreignIdFor(\App\Models\Workout::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Split::class)->constrained()->cascadeOnDelete();
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredient_meal_preps');
+        Schema::dropIfExists('workout_split');
     }
 };

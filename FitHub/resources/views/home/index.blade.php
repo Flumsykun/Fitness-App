@@ -32,8 +32,7 @@
                     <x-nav-link :href="route('admin.workout-split.create')">Create Workout Split</x-nav-link>
                 @else
                     <!-- User links -->
-                    <x-nav-link :href="route('user.dashboard')">User Dashboard</x-nav-link>
-                    <x-nav-link :href="route('split.request')">Request workout split</x-nav-link>
+                    <x-nav-link :href="route('user.split.request')">Request workout split</x-nav-link>
 
                 @endif
                 <!-- Add links to other key features or sections -->

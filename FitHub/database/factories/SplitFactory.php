@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\splits>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Split>
  */
-class SplitsFactory extends Factory
+class SplitFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,10 @@ class SplitsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+        'email' =>fake()->unique()->safeEmail(),
+            'subject' => fake()->sentence(20),
+            'message' => fake()->sentence(),
+
         ];
     }
 }

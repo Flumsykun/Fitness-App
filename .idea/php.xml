@@ -134,6 +134,11 @@
       <path value="$PROJECT_DIR$/FitHub/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/FitHub/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/FitHub/vendor/composer" />
+      <path value="$PROJECT_DIR$/FitHub/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/FitHub/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/FitHub/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/FitHub/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/FitHub/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

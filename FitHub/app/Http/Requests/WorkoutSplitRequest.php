@@ -3,17 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class WorkoutSplitRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,8 +15,11 @@ class WorkoutSplitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'workout_name' => 'required|string|max:255',
-            'workout_description' => 'required|string|',
+//            'workout_name' => 'required|string|max:255',
+//            'workout_description' => 'required|string',
+              'email' => 'required|email',
+              'message' => 'required|string|max:255',
+              'subject' => 'required|string',
         ];
     }
 }

@@ -18,6 +18,7 @@ class UserRoleController extends Controller
         $user->role->associate($role);
         $user->save();
 
+
         return redirect()->route('users.index');
     }
 }

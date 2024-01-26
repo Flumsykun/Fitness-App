@@ -22,27 +22,33 @@ class UserSeeder extends Seeder
         $userRole = Role::where('name', 'user')->first();
 
         //create an admin user
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'role_id' => $adminRole->id,
-        ]);
+        User::query()->firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin User',
+                'password' => Hash::make('password'),
+                'role_id' => $adminRole->id,
+            ]
+        );
 
         //create a coach user
-        User::create([
-            'name' => 'Coach User',
-            'email' => 'coach@exampl.com',
-            'password' => Hash::make('password'),
-            'role_id' => $coachRole->id,
-        ]);
+        User::query()->firstOrCreate(
+            ['email' => 'coach@example.com'],
+            [
+                'name' => 'Coach User',
+                'password' => Hash::make('password'),
+                'role_id' => $coachRole->id,
+            ]
+        );
 
         //create a regular user
-        User::create([
-            'name' => 'Regular User',
-            'email' => 'user@example.com',
-            'password' => Hash::make('password'),
-            'role_id' => $userRole->id,
-        ]);
+        User::query()->firstOrCreate(
+            ['email' => 'regular@example.com'],
+            [
+                'name' => 'Regular User',
+                'password' => Hash::make('password'),
+                'role_id' => $userRole->id,
+            ]
+        );
     }
 }

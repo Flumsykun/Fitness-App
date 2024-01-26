@@ -19,18 +19,21 @@ Route::post('/users/{user}/assign-role', [UserRoleController::class, 'assignRole
 Route::middleware(['auth', 'role:admin'])->group(function (){
     Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    Route::get('admin/workout-split/create', [AdminWorkoutSplitController::class, 'create'])->name('admin.workout-split.create');
+ Route::get('admin/workout-split/create', [AdminWorkoutSplitController::class, 'create'])->name('admin.workout-split.create');
     Route::post('admin/workout-split/store', [AdminWorkoutSplitController::class, 'store'])->name('admin.workout-split.store');
     Route::get('admin/workout-split/edit/{split}', [AdminWorkoutSplitController::class, 'edit'])->name('admin.workout-split.edit');
     Route::put('admin/workout-split/update/{split}', [AdminWorkoutSplitController::class, 'update'])->name('admin.workout-split.update');
     Route::delete('admin/workout-split/delete/{split}', [AdminWorkoutSplitController::class, 'delete'])->name('admin.workout-split.delete');
-
-
 });
 
+// TODO: Add the auth middleware to the user routes
+
 //User routes
-Route::get('user.split.request', [UserWorkoutSplitController::class, 'show'])->name('user.split.request');  //show the form to request a workout split
-Route::post('user.split.request', [UserWorkoutSplitController::class, 'store'])->name('user.split.request'); //store the workout split request
+Route::middleware(['auth'])->as('user.')->prefix('user')->group(function (){
+    Route::get('split/request', [UserWorkoutSplitController::class, 'create'])->name('split.request');  //show the form to request a workout split
+    Route::post('split/request', [UserWorkoutSplitController::class, 'store'])->name('split.store'); //store the workout split request
+});
+
 
 
 
